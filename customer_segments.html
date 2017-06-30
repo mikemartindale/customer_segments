@@ -11782,7 +11782,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -11837,7 +11837,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display a description of the dataset</span>
@@ -11982,7 +11982,7 @@ dtype: float64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Select three indices of your choice you wish to sample from the dataset</span>
@@ -12092,20 +12092,44 @@ dtype: float64
 <p><strong>Answer:</strong></p>
 <ul>
 <li>Customer0: Likely a restaurant per relatively:<ul>
-<li>High expenditure for Fresh (e.g. produce/ingredients) &amp; Delicatessen (e.g. desserts)</li>
-<li>Moderate expenditure for Milk/dairy, Grocery &amp; Detergents_Paper products</li>
-<li>Minimal expenditure on Frozen foods</li>
+<li>High expenditure for Fresh (e.g. produce/ingredients) &amp; Delicatessen (e.g. desserts)<ul>
+<li>Fresh 12669 &gt; mean (12000) &amp; median (8504)</li>
+<li>Delicatessen 1338 &gt; median (965) and approaching mean (1524)</li>
+</ul>
+</li>
+<li>Minimal expenditure on Frozen foods<ul>
+<li>Frozen 214 &lt; mean (3071) &amp; median (1526) and below 25th percentile of 742</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Customer1:  Likely a convenience store per relatively:<ul>
-<li>High expenditure on Grocery (dry/non-perishable goods), Milk, Detergents_Paper and Frozen    </li>
-<li>Low expenditure on Delicatessen &amp; Fresh</li>
+<li>High expenditure on Grocery (dry/non-perishable goods), Milk, Detergents_Paper and Frozen <ul>
+<li>Grocery 23127 &gt; mean (7951) &amp; median (4755) and exceeding 75th percentile of 10655</li>
+<li>Milk 13240 &gt; mean (5796) &amp; median (3627) and exceeding 75th percentile of 7190 </li>
+<li>Detergents_Paper 9959 &gt; mean (2881) &amp; median (816) and exceeding 75th percentile of 3922</li>
+<li>Frozen 3941 &gt; mean (3071) &amp; median (1526) and exceeding 75th percentile of 3554</li>
+</ul>
+</li>
+<li>Minimal expenditure on Delicatessen &amp; Fresh<ul>
+<li>Delicatessen 731 &lt; median (965) &amp; mean (1524)</li>
+<li>Fresh 3067 &lt; mean (12000) &amp; median (8504) and below 25th percentile of 3127</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Customer2:  Likely a fast food restaurant per relatively:<ul>
-<li>High expenditure for Fresh (e.g. produce/ingredients), Frozen &amp; Delicatessen (e.g. desserts)</li>
-<li>Moderate expenditure for Grocery</li>
-<li>Minimal expenditure on Detergents_Paper &amp; Milk</li>
+<li>High expenditure for Frozen, Delicatessen (e.g. desserts) &amp; Fresh (e.g. produce/ingredients)<ul>
+<li>Frozen 3576 &gt; mean (3071) &amp; median (1526) and exceeding 75th percentile of 3554</li>
+<li>Delicatessen 1014 &gt; mean (965)</li>
+<li>Fresh 4446 second highest among samples</li>
+</ul>
+</li>
+<li>Minimal expenditure on Detergents_Paper &amp; Milk<ul>
+<li>Detergents_Paper 153 &lt;  mean (2881) &amp; median (816) and below 25th percentile of 256</li>
+<li>Milk 906 &lt; mean (5796) &amp; median (3627) and below 25th percentile of 1533</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -12135,7 +12159,7 @@ dtype: float64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Make a copy of the DataFrame, using the &#39;drop&#39; function to drop the given feature</span>
@@ -12357,6 +12381,7 @@ Score:  0.681884008544
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
 I tried predicting each of the available features.  The model failed to fit Fresh, Frozen and Delicatessen.  It had small success fitting to Milk and Detergents_Paper.  The best feature prediction was for Grocery with a reported prediction score of 0.6819.  It appears that how a customer spends on Grocery is correlated with proportional spending on other product categories.</p>
+<p>Because Grocery can be relatively accurately predicted from the other features it is therefore correlated and likely adds little/less value to our goal of clustering the data. Our goal is to find features that help us differentiate the data and hence, less correlated features are better.</p>
 
 </div>
 </div>
@@ -12373,7 +12398,7 @@ I tried predicting each of the available features.  The model failed to fit Fres
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Produce a scatter matrix for each pair of features in the data</span>
@@ -15027,7 +15052,7 @@ MzMzMzMzs7b8P6YbhZeIVDkmAAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
-Grocery &amp; Detergents_Paper appear relatively strongly correlated and there appears to be a relatively weaker correlation between Detergents_Paper &amp; Milk and Grocery &amp; Milk. This confirms my suspicions about the relevance of the Grocery category.  The data for the features appears very skewed.</p>
+Grocery &amp; Detergents_Paper appear relatively strongly correlated and there appears to be a relatively weaker correlation between Detergents_Paper &amp; Milk and Grocery &amp; Milk. Per Question2, this confirms my suspicions about the irrelevance of the Grocery category.  The data for the features appears very skewed.</p>
 
 </div>
 </div>
@@ -15059,14 +15084,14 @@ Grocery &amp; Detergents_Paper appear relatively strongly correlated and there a
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Scale the data using the natural logarithm</span>
-<span class="n">log_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+<span class="n">log_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 <span class="c1"># TODO: Scale the sample data using the natural logarithm</span>
-<span class="n">log_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">samples</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+<span class="n">log_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
 
 <span class="c1"># Produce a scatter matrix for each pair of newly-transformed features</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">log_data</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">diagonal</span> <span class="o">=</span> <span class="s1">&#39;kde&#39;</span><span class="p">);</span>
@@ -20759,7 +20784,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">outlier_points</span> <span class="o">=</span> <span class="p">{}</span>
@@ -21524,7 +21549,7 @@ Data points considered outliers for the feature &#39;Delicatessen&#39;:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
@@ -22108,12 +22133,28 @@ ZlbFg0ZmZmZmZmZmZlbFg0ZmZmZmZmZmZlbFg0ZmZmZmZmZmZlbFg0ZmZmZmZmZmZlblP7rKC9hn
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer:</strong>
-The first two principal components account for almost 72% of the variance and the first four combined account for 93% of the variance in the data.</p>
-<p>The first dimension suggests that an increase in the component means customers will purchase more Milk, Grocery and Detergents_paper while purchasing somewhat less Fresh and Frozen.</p>
-<p>The second dimension suggests that an increase in the component means customers will purchase more of all product categories, though predominantly Fresh, Frozen and Delicatessen.</p>
-<p>The third dimension suggests that an increase in the component means customers will almost exclusively purchase more Delicatessen while purchasing significantly less Fresh and Detergents_paper.</p>
-<p>The fourth dimension suggests that an increase in the component means customers will purchase far more Frozen and slightly more Detergents_paper while reducing purchases of Fresh and Delicatessen.</p>
+<p><strong>Answer:</strong></p>
+<p>The first two principal components account for almost 72% of the variance and the first four combined account for 93% of the variance in the data.</p>
+<p>The first dimension is most strongly correlated with Milk, Grocery and Detergents_paper, such that where the component has a high positive value, corresponding samples will have high values for these features.  Conversely, when the component has negative values, corresponding samples will tend to have higher values for Fresh and Frozen.  Hence, this dimension/component will help isolate customers accordingly:</p>
+<ul>
+<li>Customers/samples that score high positive for this component will have higher spending on Milk, Grocery and Detergents_paper with less spending on Fresh and Frozen</li>
+<li>Customers/samples that score low negative for this component will have higher spending on Fresh and Frozen with less spending on Milk, Grocery and Detergents_paper</li>
+</ul>
+<p>The second dimension is most strongly correlated with Fresh, Frozen and Delicatessen, such that where the component has a high positive value, corresponding samples will have high values for these features.  There is a comparable, but slightly less strong correlation regarding Milk, Grocery and Detergents_paper.  Hence, this dimension/component will help isolate customers accordingly:</p>
+<ul>
+<li>Customers/samples that score high positive for this component will have higher spending on Fresh, Frozen and Delicatessen and slightly less, but still elevated, spending on Milk, Grocery and Detergents_paper</li>
+<li>Customers/samples that score low negative for this component will have relatively low spending on all categories</li>
+</ul>
+<p>The third dimension is most strongly correlated with Delicatessen, such that where the component has a high positive value, corresponding samples will have a high value for this feature.  The next strongest correlated features are Fresh followed by Detergents_paper, but in this case where the component has a negative value, the corresponding samples will tend to have higher values for these features.  Finally, there is a comparable inverse relationship, ableit much smaller for Grocery and Frozen.  Hence, this dimension/component will help isolate customers accordingly:</p>
+<ul>
+<li>Customers/samples that score high positive for this component will have higher spending on Delicatessen and lower spending on all other categories except Milk.</li>
+<li>Customers/samples that score low negative for this component will have higher spending on Fresh, Detergents_paper, slightly less, but still elevated, on Grocery and Frozen with low spending on Delicatessen and Milk.</li>
+</ul>
+<p>The fourth dimension is most strongly correlated with Frozen, such that where the component has a high positive value, corresponding samples will have a high value for this feature.  The next most strongly correlated feature is Fresh followed by Delicatessen, such that where the component has a negative value, corresponding samples will have higher values for these features.  The fourth most strongly correlated feature is Detergents_paper, such that where the component has a high positive value, corresponding samples will have a higher value for this feature.  Hence, this dimension/component will help isolate customers accordingly:</p>
+<ul>
+<li>Customers/samples that score high positive for this component will have higher spending on Frozen and slightly less, but still elevated, spending on Detergents_paper and lower spending on Fresh and Delicatessen</li>
+<li>Customers/samples that score low negative for this component will have higher spending on Fresh and Delicatessen, with low spending on Frozen and Detergents_paper.</li>
+</ul>
 
 </div>
 </div>
@@ -22130,7 +22171,7 @@ The first two principal components account for almost 72% of the variance and th
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display sample log-data after having a PCA transformation applied</span>
@@ -22218,7 +22259,7 @@ The first two principal components account for almost 72% of the variance and th
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Apply PCA by fitting the good data with only two dimensions</span>
@@ -22252,7 +22293,7 @@ The first two principal components account for almost 72% of the variance and th
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display sample log-data after applying PCA transformation in two dimensions</span>
@@ -22319,7 +22360,7 @@ The first two principal components account for almost 72% of the variance and th
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Create a biplot</span>
@@ -22334,11 +22375,11 @@ The first two principal components account for almost 72% of the variance and th
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1118cbfd0&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x111b90210&gt;</pre>
 </div>
 
 </div>
@@ -24032,7 +24073,7 @@ AAAwIQI9AAAAAJgQgR4AAAAATIhADwAAAAAm5P8DmhzS7MiuvDkAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[66]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GMM</span>
@@ -24139,7 +24180,7 @@ Recommend,  2  components, with a silhouette_score of:  0.417581266105
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[67]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display the results of the clustering from implementation</span>
@@ -25229,7 +25270,7 @@ AElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Inverse transform the centers</span>
@@ -25318,8 +25359,30 @@ AElFTkSuQmCC
 <p><strong>Answer:</strong></p>
 <p>Given the relative budgeting of the two segments:</p>
 <ul>
-<li>Segment 0 appears likely to be a grocery store.  This is best evidenced by the relatively high budgets for staples such as Milk, Grocery and Detergents/paper</li>
-<li>Segment 1 appears likely to be a restaurant, possibly a fast food establishment.  This is best evidenced by the relatively high budget for the Fresh category and relatively high budget for Frozen items.</li>
+<li>Segment 0 appears likely to be a grocery store.  This is best evidenced by the relatively high budgets for staples such as Milk, Grocery and Detergents/paper<ul>
+<li>This is in alignment with the relative feature correlations for the first principal component and relative to the dataset statistics:<ul>
+<li>Milk 6613 &gt; mean (5796) &amp; median (3627) </li>
+<li>Grocery 9927 &gt; mean (7951) &amp; median (4755) and near the 75th percentile of 10655</li>
+<li>Detergents_Paper 3266 &gt; mean (2881) &amp; median (816) and near the 75th percentile of 3922</li>
+<li>Delicatessen 977 &gt; median (965) and approaching mean (1524)</li>
+<li>Fresh 4507 &lt; mean (12000) &amp; median (8504) and near the 25th percentile of 3127</li>
+<li>Frozen 1048 &lt; mean (3071) &amp; median (1526) and near the 25th percentile of 742</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Segment 1 appears likely to be a restaurant, possibly a fast food establishment.  This is best evidenced by the relatively high budget for the Fresh category and relatively high budget for Frozen items.<ul>
+<li>This is in alignment with 2 of the 3 strongest relative feature correlations for the second principal component and relative to the dataset statistics:<ul>
+<li>Fresh 9054 &gt;  median (8504) and near the mean (12000)</li>
+<li>Frozen 2027 &gt;  median (1526)and near the mean (3071)</li>
+<li>Delicatessen 696 &lt; mean (1524) &amp; median (965)</li>
+<li>Milk 2014 &lt; mean (5796) &amp; median (3627) </li>
+<li>Grocery 2611 &lt; mean (7951) &amp; median (4755) and near the 25th percentile of 2153</li>
+<li>Detergents_Paper 329 &lt; mean (2881) &amp; median (816) and near the 25th percentile of 256</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -25338,7 +25401,7 @@ AElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[69]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display the predictions</span>
@@ -25414,7 +25477,8 @@ Sample point 2 predicted to be in Cluster 1
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>Segment 1 customers do not seem to be a good candidate for reducing delivery days per week.  This is primarily because such customers are highly dependent on Fresh category products which one presumes are the most perishable.  Hence, because of shorter shelf-life and elongated delivery times, Segment 1 customers would likely be unhappy with such a schedule.  Segment 0 customers, however, are better candidates to A/B test the new, less-frequent delivery schedule.  Their comparative dependency on far less perishable / longer-lived products such as Milk, Grocery and Detergents/paper means they are likely more tolerant to less frequent deliveries.</p>
+<p>Segment 1 customers do not seem to be a good candidate for reducing delivery days per week.  This is primarily because such customers are highly dependent on Fresh category products which one presumes are the most perishable.  Hence, because of shorter shelf-life and elongated delivery times, Segment 1 customers would likely be unhappy with such a schedule.  Segment 0 customers, however, are better candidates for the new, less-frequent delivery schedule.  Their comparative dependency on far less perishable / longer-lived products such as Milk, Grocery and Detergents/paper means they are likely more tolerant to less frequent deliveries.</p>
+<p>To test and confirm the above assertions and potentially benefit from the newly identified customer segments, the distributor should design an A/B test for the two customer segments that evaluates customer response to the changing of the delivery schedule.  For each segment, a small sample of customers should be identified/selected and split into experiment and control groups of statistically relevant sizes.  The experiment groups should be given the new schedule, while the control groups should remain on the current.  Following a predetermined, consistent period of time for all groups (perhaps 2 weeks), a customer satisfaction survey should be given to the selected customers in the control and experiment groups for both segments.  The hypothesis is that Segment 1 experiment group customers will not report complaints with the new delivery schedule relative to their control group whereas the Segment 0 experiment group will report complaints with the new delivery schedule relative to their control group.  If this hypothesis is confirmed, the distributor will have identified a reliable segment of their customers to whom they can apply the new delivery schedule.</p>
 
 </div>
 </div>
